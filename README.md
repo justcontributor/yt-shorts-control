@@ -7,7 +7,7 @@ YouTube Shorts에서도 일반 동영상의 단축키를 활용할 수 있도록
 ## 설치 방법
 
 1. 우선 Violentmonkey([Chrome](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag) / [Firefox](https://addons.mozilla.org/ko/firefox/addon/violentmonkey/))나 Tampermonkey([Chrome](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) / [Firefox](https://addons.mozilla.org/ko/firefox/addon/tampermonkey/)) 등 유저스크립트 확장 프로그램을 설치합니다.
-2. 이후 [여기](https://github.com/justcontributor/yt-speed/raw/main/script.user.js)를 눌러 확장 프로그램 설치를 진행합니다.
+2. 이후 [여기](https://github.com/justcontributor/yt-shorts-control/raw/main/script.user.js)를 눌러 확장 프로그램 설치를 진행합니다.
 3. 새로 YouTube Shorts 탭을 열거나 기존 YouTube Shorts 탭을 새로고침하면 확장 프로그램이 적용됩니다!
 
 ## 기능
