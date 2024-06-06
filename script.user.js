@@ -90,6 +90,7 @@ function addKeyListener() {
           case "l":
             video.currentTime += 10;
             break;
+          case "Space":
           case "k":
             video.paused ? video.play() : video.pause();
             break;
