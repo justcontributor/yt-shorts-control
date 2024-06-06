@@ -24,7 +24,7 @@ SOFTWARE.
 
 */
 // ==UserScript==
-// @name            More Variable YouTube Speed
+// @name            YouTube Shorts Control
 // @namespace       https://github.com/justcontributor/yt-shorts-control
 // @homepageURL     https://github.com/justcontributor/yt-shorts-control
 // @supportURL      https://github.com/justcontributor/yt-shorts-control/issues
@@ -55,33 +55,56 @@ function addKeyListener() {
   window.addEventListener(
     "keydown",
     (e) => {
-      if (!e.shiftKey) return;
+      const video = document.querySelector("video");
+      if (e.shiftKey) {
+        switch (e.key) {
+          case ">":
+          case "<":
+            const focus = e.target.tagName.toUpperCase();
+            const typing =
+              focus === "INPUT" ||
+              focus === "TEXTAREA" ||
+              e.target.getAttribute("contentEditable");
 
-      const focus = e.target.tagName.toUpperCase();
-      const typing =
-        focus === "INPUT" ||
-        focus === "TEXTAREA" ||
-        e.target.getAttribute("contentEditable");
-
-      if (typing) return;
-
-      if (e.key === ">" || e.key === "<") {
-        e.preventDefault();
-        e.stopImmediatePropagation();
-        sign = e.key === ">" ? 1 : -1;
-        step =
-          document.querySelector("video").playbackRate + sign * 0.25 > 2
-            ? 0.5
-            : 0.25;
-        newRate = document.querySelector("video").playbackRate + step * sign;
-        if (newRate > 16 || newRate < 0.25) {
-          setRateLabelText(`브라우저의 속도 제한에 도달했습니다.`);
-          showRateLabel();
-          return;
+            if (typing) return;
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            sign = e.key === ">" ? 1 : -1;
+            step = video.playbackRate + sign * 0.25 > 2 ? 0.5 : 0.25;
+            newRate = video.playbackRate + step * sign;
+            if (newRate > 16 || newRate < 0.25) {
+              setRateLabelText(`브라우저의 속도 제한에 도달했습니다.`);
+              showRateLabel();
+              return;
+            }
+            video.playbackRate = newRate;
+            setRateLabelText(`${newRate}x`);
+            showRateLabel();
+            break;
         }
-        document.querySelector("video").playbackRate = newRate;
-        setRateLabelText(`${newRate}x`);
-        showRateLabel();
+      } else {
+        switch (e.key) {
+          case "j":
+            video.currentTime -= 10;
+            break;
+          case "l":
+            video.currentTime += 10;
+            break;
+          case "k":
+            video.paused ? video.play() : video.pause();
+            break;
+          case "ArrowLeft":
+            video.currentTime -= 5;
+            break;
+          case "ArrowRight":
+            video.currentTime += 5;
+            break;
+          default:
+            n = parseInt(e.key);
+            if (!isNaN(n)) {
+              video.currentTime = video.duration * n * 0.1;
+            }
+        }
       }
     },
     true
