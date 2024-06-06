@@ -96,7 +96,7 @@ function createRateLabel() {
     transform:translate(-50%,0);
     text-align:center;
     background-color: rgba(0,0,0,0.5);
-    display:inline-block;
+    display:none;
     font-size:3rem;
     position:absolute;
     z-index:19;
