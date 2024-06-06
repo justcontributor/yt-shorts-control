@@ -108,7 +108,7 @@ function createRateLabel() {
     border-radius: 3px;
     line-height: 1.5;
     `;
-  const playerContainer = document.getElementById("ytd-player");
+  const playerContainer = document.getElementById("shorts-player");
   playerContainer.appendChild(rateLabel);
   console.log("[More Variable YouTube Speed] UserScript is Ready.");
 }
@@ -118,7 +118,7 @@ function setRateLabelText(s) {
 }
 
 function checkPlayerLoaded() {
-  const target = document.getElementById("ytd-player");
+  const target = document.getElementById("shorts-player");
   if (target) {
     clearInterval(checkLoadInterval);
     createRateLabel();
